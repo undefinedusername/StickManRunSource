@@ -1,0 +1,56 @@
+{
+    "main": "game.html",
+    "webexe_settings": {
+        "sdk_build": true,
+        "custom_script": "",
+        "uncompressed_folder": true,
+        "windows-x32": true,
+        "linux-x64": false,
+        "nw_version": "0.19.0-beta1",
+        "export_dir": "output",
+        "nw_compression_level": 0,
+        "mac-x64": false,
+        "linux-x32": false,
+        "download_dir": "C:/Users/DEFUALT/AppData/Local/StickManRun/downloads/",
+        "output_pattern": "",
+        "windows-x64": true,
+        "force_download": true
+    },
+    "description": "version 1",
+    "nodejs": true,
+    "webkit": {
+        "plugin": true,
+        "double_tap_to_zoom_enabled": false
+    },
+    "name": "StickManRun",
+    "node-remote": [],
+    "version": "0.1.0",
+    "node-main": "script\\Core.js",
+    "keywords": [
+        "demo",
+        "node",
+        "webkit"
+    ],
+    "window": {
+        "resizable": true,
+        "fullscreen": false,
+        "icon": "images/brickmossy.png",
+        "kiosk": false,
+        "transparent": false,
+        "height": 480,
+        "visible_on_all_workspaces": true,
+        "frame": true,
+        "visible": true,
+        "exe_icon": "images/brickmossy.png",
+        "always_on_top": false,
+        "as_desktop": true,
+        "width": 640,
+        "title": "StickManRun",
+        "kiosk_emulation": false,
+        "show_in_taskbar": true,
+        "show": true,
+        "id": "Game"
+    },
+    "app_name": "Stickmanrun",
+    "additional_trust_anchors": []
+}
