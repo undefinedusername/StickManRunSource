@@ -1,0 +1,3 @@
+directory : "stickmanrunSource/package.nw/images/texture/",
+type : "imagedir_texture",
+texturedir : "stickmanrunSource/package.nw/images/texture/"
