@@ -1,0 +1,1538 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Stick Man Run 4.0</title>
+	<meta name="description" content="Note: Only for Google Chrome!">
+	<meta name="author" content="Noah Enger, Andrew Urban, Travis Gomez">
+	<meta name="owner" content="Who owns this page?">
+	<meta name="owner" content="Noah Enger">
+	<meta name="copyright" content="Copyright© 2016 - 2017 StickGenStudios">
+	<meta name="description" content="Game:">
+	<meta name="description" content="StickManRun V4">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<style>
+html{
+cursor:url(images/cursers/burger.cur),auto;
+}
+#opt{
+text-align:center;
+font-family:Impact;
+}
+#opt_dif{
+text-align:center;
+font-family:Impact;
+}
+#opt_info{
+text-align:center;
+font-family:Impact;
+}
+#opt_plr{
+text-align:center;
+font-family:Impact;
+}
+#container{
+height:400px;
+position:relative;
+width:400px;
+}
+#viewport{
+cursor:url(images/cursers/burger.cur),auto;
+z-index:1;
+top:0px;
+height: 100%;
+width: 100%;
+border:1px solid #d3d3d3;
+background-image:url("images/texture/cliff.png");
+-webkit-user-select: text;
+-moz-user-select: text;
+-ms-user-select: text;
+-user-select: text;
+position:fixed;
+}
+#controls{
+cursor:url(images/cursers/burger.cur),auto;
+bottom: 0;
+left: 0;
+width: 100%;
+z-index:2;
+position:absolute;
+top:90; 
+left:90
+}
+canvasa{
+cursor:url(images/cursers/burger.cur),auto;
+border:1px solid #d3d3d3;
+background-image:url("images/texture/woodwall.png");
+-webkit-user-select: text;
+-moz-user-select: text;
+-ms-user-select: text;
+-user-select: text;
+width:1000px;
+height:400px;
+}
+body{
+cursor:url(images/cursers/burger.cur),auto;
+-webkit-user-select: text;
+-moz-user-select: text;
+	background-image:url("images/texture/clifftop.png");
+	background-repeat: repeat-x;
+	 background-image:url("images/texture/cliffbottom.png");
+-ms-user-select: text;
+-user-select: text;
+}
+p, input, textarea{
+cursor:url(images/cursers/burger.cur),auto;
+-webkit-user-select: text;
+-moz-user-select: text;
+-ms-user-select: text;
+-user-select: text;
+z-index:2;
+}
+input{
+cursor:url(images/cursers/burger.cur),auto;
+border:1px solid black;
+box-shadow: 10px 10px;
+}
+header, footer{
+cursor:url(images/cursers/burger.cur),auto;
+background-color:black;
+height:50px;
+position:fixed;
+width:100%;
+z-index:1000;
+}
+footer{
+cursor:url(images/cursers/burger.cur),auto;
+bottom:0px;
+}
+#menuB{
+cursor:url(images/cursers/burger.cur),auto;
+width: 50%;
+-webkit-user-select: text;
+-moz-user-select: text;
+-ms-user-select: text;
+-user-select: text;
+z-index:2;
+}
+#bar_controls{
+-webkit-user-select: text;
+-moz-user-select: text;
+-ms-user-select: text;
+-user-select: text;
+width:1000px;
+height:100px;
+background-color:black;
+z-index:2;
+}
+#menuA,#dialogmenu,#dialoginfo,#deathmenu{
+cursor:url(images/cursers/cur1.ani),auto;
+width:1000px;
+height:500px;
+text-align:center;
+font-family:Impact;
+position:fixed;
+z-index:2;
+border: 15px groove #73AD21;
+padding: 15px;
+	-webkit-animation: mymove 5s infinite; /* Chrome, Safari, Opera */
+    animation: mymove 5s infinite;
+	
+}
+#table_score{
+font-family:Impact;
+}
+table,th,td {
+border: 1px solid grey;
+font-family:Impact;
+}
+#mainmenu_start{
+cursor:url(images/cursers/but.cur),auto;
+	width:200px;
+	margin-top: 100px;
+    margin-bottom: 100px;
+    margin-right: 150px;
+    margin-left: 80px;
+	height:200px;
+	position:fixed;
+	z-index:2;
+}
+#resbut{
+visibility:hidden;
+}
+#Information{
+cursor:url(images/cursers/but.cur),auto;
+	width:200px;
+	margin-top: 150px;
+    margin-bottom: 150px;
+    margin-right: 150px;
+    margin-left: 80px;
+	height:200px;
+	position:fixed;
+	z-index:2;
+}
+#mainmenu_options{
+cursor:url(images/cursers/but.cur),auto;
+	margin-top: 300px;
+    margin-bottom: 300px;
+    margin-right: 150px;
+    margin-left: 80px;
+position:fixed;
+width:200px;
+height:200px;
+font-family:Impact;
+z-index:2;
+}
+#mainmenu{
+cursor:url(images/cursers/cur1.ani),auto;
+position:fixed;
+width:100px;
+height:100px;
+z-index:2;
+}
+#title{
+z-index:2;
+font-family:Impact;
+position:fixed;
+color:black;
+}
+#menuA{
+cursor:url(images/cursers/but.cur),auto;
+top:50px;
+}
+	/* Chrome, Safari, Opera */
+	@-webkit-keyframes mymove {
+    0%   {background-color: green;}
+    25%  {background-color: 009900;}
+    50%  {background-color: blue;}
+    100% {background-color: green;}
+	}
+	
+	/* Standard syntax */
+	@keyframes mymove {
+    0%   {background-color: green;}
+    25%  {background-color: 009900;}
+    50%  {background-color: blue;}
+    100% {background-color: green;}
+	}
+	#myProgress {
+	position: relative;
+	width: 100%;
+	height: 30px;
+	background-color: #ddd;
+	}
+	
+	#myBar {
+	position: absolute;
+	width: 10;
+	height: 40px;
+	background-image:url("images/brick.png");
+	}
+	
+	#label {
+	text-align: center;
+	line-height: 50px;
+	color: white;
+	font-family:Impact;
+	}
+	button{
+	cursor:url(images/cursers/but.cur),auto;
+	}
+	button,#menudialog_start,#updateDetails{
+	cursor:url(images/cursers/but.cur),auto;
+	}
+	#notemenu{
+	z-index:1000000;
+	}
+</style>
+<script src="script/game/Core.core"></script>
+
+	<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>	
+	<script src="audio/music.js"></script>
+	<script src="node_modules/node-core-audio-master/node-core-audio.js"></script>
+	<script src="node_modules/file-system/file-system.js"></script>
+	<script src="script/Storage/storage.js"></script>
+	<script src="user/default.smru"></script>
+	<script src="mods/mods.smrc"></script>
+	<script src="node_modules/audio-master/index.js"></script>
+	<link rel="shortcut icon" href="images/brickmossy.png" type="image/x-icon">
+<link rel="icon" href="images/brickmossy.png"></link> 
+		</head>
+</head>
+<body id="bodydoc" onload="var x=document.createElement('script');x.src='script/game/Core.core';download(JSON.parse(localStorage.getItem('score')), 'Scores.txt', 'text/plain');dialogmenushow(false);load();Optionsmenu();document.getElementById('viewport').style.visibility='hidden';document.getElementById('container').style.visibility='hidden';">
+	<dialog id="notemenu" onclick="document.getElementById('notemenu').style.visibility='hidden'"open="open">
+		<p id="note"><b>Note:</b> Version 4.0.0<br><b>The Animated Update!<br>-Windows98 Animated Player Model!</b><br>-added a new obstical!<br>-fixed some bugs!<br>-added score saving to storage!<br>-custom profiles in storage for modders! *see the mods menu<br>Click this note to remove it!</p>
+	</dialog>
+			<footer id="load">
+		<p id="label_load"><label for="load">Loading Assets . . .</label></p>
+			<div id="myProgress">
+				<div id="myBar">
+					<div id="label">1%</div>
+				</div>
+			</div>
+			</footer>
+			<div id="container">
+		<canvas id="viewport">
+		</canvas>
+			<dialog id="dialogmenu">
+				<form method="dialog">
+					<menu>
+						<section>
+							<p id="title"><label for="dialogmenu"><b>StickManRun</b></label></p>
+						</section>
+						<button id="menudialog_start" onclick="dialogmenushow(false);document.getElementById('viewport').style.visibility='visible';document.getElementById('container').style.visibility='visible';document.getElementById('dialogmenu').style.visibility='hidden';startGame();">Start game</button>
+						<button id="updateDetails" onclick="dialogoptionsshow(true);">Options<i class="fa fa-cog fa-spin"></i></button>
+						<br>
+						<button id="Information" onclick="dialoginfoshow(true);">Mods</button>
+					</menu>
+				</form>
+			</dialog>
+				<dialog id="dialoginfo">
+					<form method="dialog">
+						<menu>
+							<section>
+								<p id="title"><label for="dialogmenu"><b>Mods:</b></label></p>
+							</section>
+							<button onclick="openwindow('mods/DOSdungeon/index.html');dialogoptionsshow(false);">Load Mods!</button>
+							<br>
+							
+							<button onclick="dialogoptionsshow(false);">Main Menu</button>
+						</menu>
+					</form>
+				</dialog>
+				<dialog id="deathmenu">
+					<form method="dialog">
+						<menu>
+                          <section>
+					<p><label for="deathmenu">Game Over!</label></p>
+					<p id="note">You Died!</p>
+                            <br>
+                            <p id="line1"></p>
+                            <p id="line2"></p>
+                            <p id="line3"></p>
+                            <p id="line4"></p>
+                            <p id="line5"></p>
+                            <br>
+					<menu>
+						<button onclick="reloadpage()">Restart!</button>
+					</menu>
+              </section>
+						</menu>
+					</form>
+				</dialog>
+		</div>
+		<button onclick="reloadpage()">Restart!</button>
+		<button id="resbut" onclick="reloadpage()">Restart!</button>
+	
+		
+	<script>
+		/*
+			music.onAPI();
+			music.Play(0);
+		 */
+		//Player Models//
+		var frogmodel={up:"images/texture/player_up.gif",down:"images/texture/player_down.gif",left:"images/texture/player_left.gif",right:"images/texture/player_right.gif"};
+		var frogmodela={up:"images/texture/frog2_up.gif",down:"images/texture/frog2_down.gif",left:"images/texture/frog2_left.gif",right:"images/texture/frog2_right.gif"};
+		var sanicmodel={up:"images/sanic_up.png",down:"images/sanic_down.png",left:"images/sanic_left.png",right:"images/sanic_right.png"};
+		var snoop={up:"images/texture/1_up.gif",down:"images/texture/1_down.gif",left:"images/texture/1.gif",right:"images/texture/1_right.gif"};
+		//game logic
+		var highscoredata=JSON.parse(localStorage.getItem("score"));
+		var gamemode=78;
+		var dev=false;
+		var scoredata = JSON.parse(sessionStorage.getItem("high_score"));
+		var datastickrun;
+		var level=1;
+		var score=0;
+		var myHealth;
+		var gr=[];
+		var dead;
+		var Player={randpos:Math.floor((Math.random() * 100) + 1),type:1,texture:"sanic.jpg",health:1000,damage:2,tool:null,score:0,ammo:1000};
+		var ammo={deftexture:"images/bullet.png"}
+		var GUIimages={healthmax:"images/GUI/healthbar/healthbar_1000.png",healthhalf:"images/GUI/healthbar/healthbar_500.png",healthnone:"images/GUI/healthbar/healthbar_0.png",healthten:"images/GUI/healthbar/healthbar_100.png",healthtwenty:"images/GUI/healthbar/healthbar_200.png",healththirty:"images/GUI/healthbar/healthbar_300.png",healthforty:"images/GUI/healthbar/healthbar_400.png",healthsixty:"images/GUI/healthbar/healthbar_600.png",healthsevendy:"images/GUI/healthbar/healthbar_700.png",healtheighty:"images/GUI/healthbar/healthbar_800.png"};
+		var powerScore=[];
+		var projectile;
+		var tipmessage;
+		//components
+		var myGamePiece;
+		var myObstacles = [];
+		var myBackground=[];
+		var myCoords;
+		var myPowerups;
+		var myScore;
+		var back=[];
+		var snoopy=false;
+		var bot=[];
+		var myGameOver;
+		var mycredits;
+		var mycreditsA;
+		var powerTime=[];
+		var powerHeal=[];
+		var mycreditsB;
+		var myMusic;
+		var myDeathmusic;
+		var myButtonclick;
+		var gameoverimage;
+		var myHealthBar;
+		var gameoverpiece;
+		var mycreditsC;
+		var myHigherScore;
+		//GameInfo
+		var gameInfo={
+			version_major:4,
+			version_minor:0,
+			version_patch:0,
+			version_type:"stmr_beta4.0.0",
+			engine:"StickGen",
+			copyright:"Copyright© 2016 - 2017 StickGenStudios",
+			author:"Noah Enger",
+			artist:"Andrew Urban"
+		}
+          
+		//menus
+		function CreateMenu(id){
+          this.rawid=id;
+		  this.id=document.getElementById(this.rawid);
+		  this.ishidden;
+		  this.islocked=false;
+		  this.show=function(){
+		var x=document.getElementById(id);
+		x.style.visibility="visible";
+		}
+          this.hide=function(){
+				var x=document.getElementById(this.rawid);
+				x.style.visibility="hidden";
+          }
+            this.sethtml=function(text){
+            var x=document.getElementById(this.rawid);
+              x.InnerHTML=text;
+            }
+              this.setonclick=function(code){
+                var x=document.getElementById(this.rawid);
+                x.onclick=code;
+              }
+                this.setstyle=function(style){
+                  
+                }
+                  this.getid=function(){
+                   return rawid; 
+                  }
+                    this.gettype=function(){
+                      
+                    }
+                      this.isActive=function(){
+                       return ishidden; 
+                      }
+		}
+      /////////
+      //Menus//
+      /////////
+      var pausemenu=new CreateMenu("pause");
+      var gameovermenu=new CreateMenu("gameovermenu");
+      ////////////////
+      //options menu//
+      ////////////////
+		var updateButton = document.getElementById('updateDetails');
+		var cancelButton = document.getElementById('cancel');
+		var favDialog2 = document.getElementById('menuB');
+		var strings={
+			mainmenu:function(){
+			//your generic strings :$
+			this.build="b0.1";
+			this.startbutton="Play Game";
+			this.optionsbutton="Settings";
+			this.backbutton="Main Menu";
+			this.infobutton="About";
+			//Url Strings
+			this.backgroundurl="images/backgrounds/back1.png";
+			this.buttonurl="images/GUI/button/button.png";
+			this.buttonactiveurl="images/GUI/button/button_active.png";
+			this.logourl="images/GUI/logo.png";
+			},
+			options:function(){
+			//your generic strings :$
+			this.backbutton="Main Menu";
+			this.howtoplay="Controls: <br> WASD = Movement<br> P = Pause <br> ";
+			},
+			info:function(){
+			
+			},
+			credits:function(){
+			
+			}
+		}
+		
+		//inputs
+		var froga;
+		var frog;
+		var sanic;
+		var wplm;
+		//fonts
+		var myfont="Impact";
+		//other
+		var screenHeight;
+		var gravityvar=0;
+		var tool={none:0,brokenaxe:1,axe:2,brokensword:3,sword:4,bow:5,arrow:6};
+		var playerdef="images/player/Player2.png";
+		
+		
+		function prevent(event){
+			event.preventDefault();
+		}
+		
+		function Timer(functionname,milliseconds){
+			setInterval(functionname,milliseconds);
+		}
+		
+		function reloadpage(){
+			location.reload();
+		}
+		
+		function historyalert(){
+			var historytrue=false;
+			if(historytrue==false){
+				alert('Note: Version '+gameInfo.version_major+"!");
+				historytrue=true;
+				localStorage.setItem("message_history",historytrue);
+				historytrue=localStorage.getItem("message_history");
+				}else{
+				alert("test");
+			}
+		}
+		
+		function load(){
+			var elem = document.getElementById("myBar");
+			var elema = document.getElementById("myProgress");
+			var elemb = document.getElementById("load");
+			var loadele = document.getElementById("label_load");
+			var width = 10;
+			var timeload = 1000;
+			var id = setInterval(frame, timeload);
+			var showloada;
+			var showloadb;
+			function frame() {
+			showloada=true;
+			if(width>=40){
+			showloada=false;
+			showloadb=true;
+			}
+			if(showloada==true){
+			loadele.innerHTML = "Loading Images and other bullshit . . .";
+			timeload = 70;
+			var id = setInterval(frame, timeload);
+			showloada=false;
+			}if(showloadb==true){
+			loadele.innerHTML = "Loading Bullshit . . .";
+			timeload = 140;
+			}
+			if(width>=80){
+			
+			}
+				if (width >= 100) {
+					clearInterval(id);
+					dialogmenushow(true);
+					elem.style.visibility='hidden';
+					elema.style.visibility='hidden';
+					elemb.style.visibility='hidden';
+					}else{
+					width++;
+					elem.style.width = width + '%';
+					document.getElementById("label").innerHTML = width * 1  + '%';
+				}
+			}
+		}
+		
+		function sound(src) {
+			this.sound = document.createElement("audio");
+			this.sound.src = src;
+			this.sound.setAttribute("preload", "auto");
+			this.sound.setAttribute("controls", "none");
+			this.sound.style.display = "none";
+			document.body.appendChild(this.sound);
+			this.play = function(){
+				this.sound.play();
+			}
+			this.stop = function(){
+				this.sound.pause();
+			}
+		}
+		
+		var data={
+			save:function(tag,value){
+				localStorage.setItem(tag,value);
+			},
+			get:function(tag,decodetonum){
+				var item;
+				this.tag=tag;
+				if(decodetonum==true){
+					item=JSON.parse(localStorage.getItem(this.tag));
+					return item;
+					}else{
+					item=localStorage.getItem(this.tag);
+					return item;
+                    }
+			},
+			sessionsave:function(tag,value){
+				sessionStorage.setItem(tag,value);
+			},
+			sessionget:function(tag,decodetonum){
+				var item;
+				this.tag=tag;
+				if(decodetonum==true){
+					item = JSON.parse(sessionStorage.getItem(tag));
+					return item;
+					}else{
+					sessionStorage.getItem(tag);
+				}
+			}
+		}
+		function startGame() {
+			var x,y;
+			if(typeof(Storage) !== "undefined") {
+				if (scoredata !== undefined) {
+					//code for data if high score exists//
+					
+				} else {
+					//code for data if high score dont exist//
+				}
+				//more code for high score existing//
+				
+			} else {
+				//if browser dont support the API Local Storage//
+				alert("Error: Your browser dont support Local Storage you retard!");
+				console.log("Error: Your browser dont support Local Storage you retard!");
+			}
+			/*
+				music.Stop(0);
+				music.Play(2);
+			 */
+			tipmessage = new component("30px",myfont,"Black",270,200,"text");
+			projectile = new component(4,4,ammo.deftexture,x,y,"image");
+			myDeathmusic= new sound('audio/gameover.mp3');
+			myhighscore=new component("30px",myfont,"red", 280, 120, "text");
+			myGamePiece = new component(30,30,Player.texture, 10, 120,"image");
+			myCoords = new component(30,myfont,"Blue",280,180,"text");
+			myPowerups = new component(30,myfont,"White",100,80,"text");
+			myScore = new component("30px",myfont,"red", 280, 40, "text");
+			myHigherScore = new component("30px",myfont,"red",600,40,"text");
+			myHealth = new component("30px",myfont, "red", 280, 100, "text");
+			myHealthBar = new component(100,10,GUIimages.healthmax,280,105,"image");
+			myGameOver = new component("30px",myfont, "Black", 270,250, "text");
+			mycredits = new component("30px",myfont, "Black", 270,300, "text");
+			mycreditsA = new component("30px",myfont, "Black", 270,350, "text");
+			mycreditsB = new component("30px",myfont, "Black", 270,400, "text");
+			mycreditsC = new component("30px",myfont, "Black", 270,450, "text");
+			windowtext = new component("30px",myfont,"Black",500,500,"text");
+			windowtitle = new component("30px",myfont,"Black",500,250,"text");
+			myGameArea.start();
+		}
+		
+		function openwindow(websiteurl) {
+			window.open(websiteurl, "_blank", "toolbar=yes, scrollbars=yes, resizeable=yes, top=500, left=500, width=10000, height=10000");
+		}
+		var myGameArea = {
+			canvas : document.getElementById("viewport"),
+			start : function() {
+				this.canvas.width = 1000;
+				this.canvas.height = 400;
+				this.context = this.canvas.getContext("2d");
+				document.body.insertBefore(this.canvas, document.body.childNodes[0]);
+				this.frameNo = 0;
+				this.interval = setInterval(updateGameArea, 20);
+				setInterval(healthbar(),10);
+				window.addEventListener('keydown', function (e) {
+					myGameArea.keys = (myGameArea.keys || []);
+					myGameArea.keys[e.keyCode] = true;
+				})
+				window.addEventListener('keyup', function (e) {
+					myGameArea.keys[e.keyCode] = false; 
+				})
+				window.addEventListener('touchmove', function (e) {
+					myGameArea.x = e.touches[0].screenX;
+					myGameArea.y = e.touches[0].screenY;
+				})
+				window.addEventListener('mousedown', function (e) {
+					myGameArea.x = e.pageX;
+					myGameArea.y = e.pageY;
+				})
+				window.addEventListener('mouseup', function (e) {
+					myGameArea.x = false;
+					myGameArea.y = false;
+				})
+				window.addEventListener('touchstart', function (e) {
+					myGameArea.x = e.pageX;
+					myGameArea.y = e.pageY;
+				})
+				window.addEventListener('touchend', function (e) {
+					myGameArea.x = false;
+					myGameArea.y = false;
+				})
+			},
+			clear : function() {
+				this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+              if(powerScore.x<=0){
+                
+              }
+			},
+			clearobs : function() {
+				this.context.clearRect(0, 0, 10, this.canvas.height);
+				this.context.clearRect(0,0,20,this.canvas.height);
+			}
+		}
+		function setCookie(cname,cvalue,exdays) {
+			var d = new Date();
+			d.setTime(d.getTime() + (exdays*24*60*60*1000));
+			var expires = "expires=" + d.toGMTString();
+			document.cookie = cname+"="+cvalue+"; "+expires;
+		}
+		function getCookie(cname) {
+			var name = cname + "=";
+			var ca = document.cookie.split(';');
+			for(var i=0; i<ca.length; i++) {
+				var c = ca[i];
+				while (c.charAt(0)==' ') {
+					c = c.substring(1);
+				}
+				if (c.indexOf(name) == 0) {
+					return c.substring(name.length, c.length);
+				}
+			}
+			return "";
+		}
+		
+		function component(width, height, color, x, y, type) {
+			this.type = type;
+			if (type == "image" || type == "background") {
+				this.image = new Image();
+				this.image.src = color;
+			}
+			this.score = 0;
+			this.bounce = 0.6;
+			this.speed = 1;
+			this.width = width;
+			this.height = height;
+			this.speedX = 0;
+			this.speedY = 0;	
+			this.x = x;
+			this.y = y;
+			this.gravity = 0;
+			this.gravitySpeed = 0;
+			this.update = function() {
+				ctx = myGameArea.context;
+				if (type == "image" || type == "background") {
+					ctx.drawImage(this.image, 
+					this.x, 
+					this.y,
+					this.width, this.height);
+					if (type == "background") {
+						ctx.drawImage(this.image, 
+						this.x + this.width, this.y, this.width, this.height);
+					}
+					}else if (this.type == "text") {
+					ctx.font = this.width + " " + this.height;
+					ctx.fillStyle = color;
+					ctx.fillText(this.text, this.x, this.y);
+					}else {
+					ctx.fillStyle = color;
+					ctx.fillRect(this.x, this.y, this.width, this.height);
+				}
+				this.clicked = function() {
+					var myleft = this.x;
+					var myright = this.x + (this.width);
+					var mytop = this.y;
+					var mybottom = this.y + (this.height);
+					var clicked = true;
+					if ((mybottom < myGameArea.y) || (mytop > myGameArea.y)
+					|| (myright < myGameArea.x) || (myleft > myGameArea.x)) {
+						clicked = false;
+					}
+					return clicked;
+				}
+			}
+			this.newPos = function() {
+				this.x += this.speedX;
+				this.y += this.speedY;
+				if (this.type == "background") {
+					if (this.x == -(this.width)) {
+						this.x = 0;
+					}
+				}
+			}
+			this.newPosNpc = function() {
+				this.x += this.speed * Math.sin(this.angle);
+				this.y -= this.speed * Math.cos(this.angle);
+			}
+			this.hitBottom = function() {
+				var rockbottom = myGameArea.canvas.height - this.height;
+				if (this.y > rockbottom) {
+					this.gravitySpeed = -(this.gravitySpeed * this.bounce);
+					this.y = rockbottom;
+					this.gravitySpeed = 0;
+				}
+			}
+			this.crashWith = function(otherobj) {
+				var myleft = this.x;
+				var myright = this.x + (this.width);
+				var mytop = this.y;
+				var mybottom = this.y + (this.height);
+				var otherleft = otherobj.x;
+				var otherright = otherobj.x + (otherobj.width);
+				var othertop = otherobj.y;
+				var otherbottom = otherobj.y + (otherobj.height);
+				var crash = true;
+				if ((mybottom < othertop) || (mytop > otherbottom) || (myright < otherleft) || (myleft > otherright)) {
+					crash = false;
+				}
+				return crash;
+			}
+		}
+		function download(text, name, type) {
+			var a = document.getElementById("a");
+			var file = new Blob([text], {type: type});
+			a.href = URL.createObjectURL(file);
+			a.download = name;
+		}
+      var hard=false;
+      var points=250;
+		function setmode(mode){
+			if(mode==="easy"){
+				gamemode=100;
+              points=500;
+				}else if(mode==="normal"){
+				gamemode=58;
+                  points=1000;
+				}else if(mode==="hard"){
+				gamemode=70;
+                  points=5000;
+                  hard=true;
+			}
+		}
+      ///////////////////////////////////////////////////////////////////
+      //		runs every frame (for sidescrolling games)			   //
+      ///////////////////////////////////////////////////////////////////
+		function updateGameArea() {
+			var x, height, gap, minHeight, maxHeight, minGap, maxGap;
+			for (i = 0; i < powerScore.length; i += 1) {
+				if (myGamePiece.crashWith(powerScore[i])) {
+					myGameArea.frameNo+=points;
+					myGamePiece.newPos();
+					myGamePiece.update();
+					myGamePiece.speedX -= 20;
+					powerScore.splice([i], 1);
+					return;
+				} 
+			}
+			for (i = 0; i < powerHeal.length; i += 1) {
+				if (myGamePiece.crashWith(powerHeal[i])) {
+					if(Player.health<=999){
+						Player.health+= 100;
+					}
+					myGamePiece.newPos();
+					myGamePiece.update();
+					myGamePiece.speedX -= 10;
+					powerHeal.splice([i], 1);
+                  if(powerHeal.length>10){
+                    powerHeal=[]; 
+                  }
+					return;
+				} 
+			}
+          //collision for time powerup (unused)//
+			for (i = 0; i < powerTime.length; i += 1) {
+				if (myGamePiece.crashWith(powerTime[i])) {
+					myGamePiece.newPos();
+					myGamePiece.update();
+					myGamePiece.speedX -= 10;
+					powerTime=[]
+					
+					return;
+				} 
+			}
+          //collision detection for obstacles//
+			for (i = 0; i < myObstacles.length; i += 1) {
+				if (myGamePiece.crashWith(myObstacles[i])) {
+					health();
+					return;
+				} 
+			}
+          //unused collision detection//
+			for (i = 0; i < gr.length; i += 1) {
+				if (myObstacles.crashWith(gr[i])) {
+					spin()
+					return;
+				} 
+			}
+          //health check//
+			if(Player.health<=0){
+				health();
+			}
+			
+			myGameArea.clear();
+			myGamePiece.speedX = 0;
+			myGamePiece.speedY = 0; 
+          //setkeybind(87,move("up"));
+          //setkeybind(65,move("left"));
+          //setkeybind(83,move("down"));
+          //setkeybind(68,move("right"));
+			if (myGameArea.keys && myGameArea.keys[87])/*w key*/ {move("up"); }
+			if (myGameArea.keys && myGameArea.keys[65])/*a key*/ {move("left"); }
+			if (myGameArea.keys && myGameArea.keys[83])/*s key*/ {move("down"); }
+		    if (myGameArea.keys && myGameArea.keys[68])/*d key*/ {move("right"); }
+			if (myGameArea.keys && myGameArea.keys[95])/*p key*/ {menuarray.help.show(); }
+			if (myGameArea.touchX && myGameArea.touchY) {
+				myGamePiece.x = myGameArea.x;
+				myGamePiece.y = myGameArea.y;	
+			}
+			myGameArea.frameNo += 1;
+			if (myGameArea.frameNo == 1 || everyinterval(gamemode)) {
+				x = myGameArea.canvas.width;
+				screenHeight=myGameArea.canvas.height;
+				minHeight = 20;
+				maxHeight = 200;
+				height = Math.floor(Math.random()*(maxHeight-minHeight+1)+minHeight);
+				minGap = 50;
+				maxGap = 200;
+				gap = Math.floor(Math.random()*(maxGap-minGap+1)+minGap);
+				if(Player.health<=500){
+					Player.health += 50;
+				}
+				/*(width, height, color, x, y, type))*/
+				
+              if(hard==true){
+                //
+                //Random obstacles
+                //
+                myObstacles.push(new component(16,16, "images/brick.png", x,height +gap, "image"));
+                myObstacles.push(new component(24,24, "images/brick.png", x- gap,gap+5, "image"));
+                myObstacles.push(new component(16,16, "images/brick.png", x + gap,height + 4, "image"));
+              	myObstacles.push(new component(24,24, "images/brick.png", x,gap, "image"));
+              	myObstacles.push(new component(12,24, "images/texture/sand.png", x, gap, "image"));	
+              	myObstacles.push(new component(24,24, "images/brick.png", x,height +gap, "image"));
+              	myObstacles.push(new component(24,24, "images/brick.png", x,gap, "image"));
+              	myObstacles.push(new component(12,24, "images/texture/sand.png", x, gap, "image"));
+              	myObstacles.push(new component(24,12, "images/texture/sand.png",x,0.10, "image"));	
+              	myObstacles.push(new component(16,16, "images/brick.png",gap- x,height +gap, "image"));
+              	myObstacles.push(new component(24,24, "images/brick.png",gap+ x,gap, "image"));
+                myObstacles.push(new component(12,24, "images/texture/sand.png", gap+x, gap, "image"));	
+              
+                //
+                //Pipes
+                //
+                myObstacles.push(new component(50, height, "green", x+gap, 0));
+				myObstacles.push(new component(50, x - height - gap, "green", x+gap, height + gap));
+              }
+              //
+              //all gamemodes (put powerups and default obstacles here)
+              //
+               myObstacles.push(new component(50, height, "green", x+gap, 0));
+				myObstacles.push(new component(50, x - height - gap, "green", x+gap, height + gap));
+              //pipes (all difficulties)
+              height = Math.floor(Math.random()*(maxHeight-minHeight+1)+minHeight);
+               gap=Math.floor(Math.random()*(maxGap-minGap+1)+minGap);
+                myObstacles.push(new component(50, height, "green", x, 0));
+               powerScore.push(new component(16,16, "images/items/money.png", x+4,height +gap -10, "image"));
+				myObstacles.push(new component(50, x - height - gap, "green", x, height + gap));
+              height = Math.floor(Math.random()*(maxHeight-minHeight+1)+minHeight);
+              gap=Math.floor(Math.random()*(maxGap-minGap+1)+minGap);
+               myObstacles.push(new component(50, height, "green", x+gap*5, 0));
+				myObstacles.push(new component(50, x - height - gap, "green", x+gap*5, height + gap));
+              
+              //powerups
+                powerScore.push(new component(16,16, "images/items/money.png", x+4,height +gap -10, "image"));
+				powerHeal.push(new component(16,16, "images/items/heal.png", x-2,height +gap-100, "image"));
+              //unused powerups
+              //powerTime.push(new component(432,240, "images/GUI/healthbar/healthbar_1000.png", x-3,height +gap+100, "image")); 
+			  //random files
+			}
+			for (i = 0; i < myObstacles.length; i += 1) {
+				myObstacles[i].x -= 25;
+				myObstacles[i].update();
+			}
+			for (i = 0; i < powerScore.length; i += 1) {
+				powerScore[i].x -= 10;
+				powerScore[i].update();
+			}
+			for (i = 0; i < powerHeal.length; i += 1) {
+				powerHeal[i].x -= 5;
+				powerHeal[i].update();
+			}
+			
+			for (i = 0; i < powerTime.length; i += 1) {
+				powerTime[i].x -= 100;
+				powerTime[i].update();
+			}
+			
+		
+			
+			for (i - 0; i < gr.length; i += 1)	 {
+				gr[i].x -= 20;
+				gr[i].update();
+			}
+			for (i=0; i<window.length; i += 1){
+				window[1].update();
+				window[2].update();
+				setWindow("test","test")
+			}
+			/*top barrier*/bot.push(new component(80,50,"images/texture/clifftop.png",0,0,"image"));
+			
+			/*bottom barrier*/bot.push(new component(80,50,"images/texture/clifftop2.png",0,350,"image"));
+			if(dev==true){
+              myCoords.text="X:	 " + getPlayerx() + "  Y: " + getPlayery() + " highsore: " + highscoredata+" Array:"+powerScore.length;
+				myCoords.update();
+			}
+			bounce();
+			healthbar();
+			
+			myGameArea.clearobs();
+			
+			myScore.text="SCORE: " + myGameArea.frameNo;
+			myScore.update();
+			
+			myHealth.text="Health: " + Player.health;
+			myHealth.update();
+			
+			// myPowerups.text="PowerUp: "+ undefined;
+			// myPowerups.update();
+			
+			myGamePiece.newPos();
+			myGamePiece.update();
+			
+			
+			/*  bot.push(new component(80,50,"images/texture/cliffbottom.png",x,30,"image"));
+				bot.push(new component(80,40,"images/back.png",x,50,"image"));
+				bot.push(new component(80,50,"images/texture/cliffbottom.png",x,320,"image"));
+			bot.push(new component(80,40,"images/back.png",x,300,"image"));*/
+			if(typeof(Storage) !== "undefined") {
+				if (scoredata !== undefined) {
+					//code for data if high score exists//
+					myHigherScore.text="Current high score: " + highscoredata;
+					myHigherScore.update();
+				} else {
+					//code for data if high score dont exist//
+				}
+				//more code for high score existing//
+				
+			} else {
+				//if browser dont support the API Local Storage//
+				alert("Error: Your browser dont support Local Storage you retard!");
+				console.log("Error: Your browser dont support Local Storage you retard!");
+			}
+		}
+		function everyinterval(n) {
+			if ((myGameArea.frameNo / n) % 1 == 0) {return true;}
+			return false;
+		}
+		
+		function setkeybind(keyid,action){
+		var keyid,action;
+		this.key=keyid;
+		this.action=action;
+		if (myGameArea.keys && myGameArea.keys[keyid])/*w key*/ {action}
+
+		}
+		
+		function getPlayerx(){
+			this.x=myGamePiece.x;
+			return this.x;
+		}
+		function getPlayery(){
+			this.y=myGamePiece.y;
+			return this.y;
+		}
+		
+		// Copyright 2013 William Malone (www.williammalone.com)
+		//
+		// Licensed under the Apache License, Version 2.0 (the "License");
+		// you may not use this file except in compliance with the License.
+		// You may obtain a copy of the License at
+		//
+		//   http://www.apache.org/licenses/LICENSE-2.0
+		//
+		// Unless required by applicable law or agreed to in writing, software
+		// distributed under the License is distributed on an "AS IS" BASIS,
+		// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+		// See the License for the specific language governing permissions and
+		// limitations under the License.
+		
+		(function() {
+			// http://paulirish.com/2011/requestanimationframe-for-smart-animating/
+			// http://my.opera.com/emoller/blog/2011/12/20/requestanimationframe-for-smart-er-animating
+			// requestAnimationFrame polyfill by Erik Möller. fixes from Paul Irish and Tino Zijdel
+			// MIT license
+			
+			var lastTime = 0;
+			var vendors = ['ms', 'moz', 'webkit', 'o'];
+			for(var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
+				window.requestAnimationFrame = window[vendors[x]+'RequestAnimationFrame'];
+				window.cancelAnimationFrame = window[vendors[x]+'CancelAnimationFrame'] 
+				|| window[vendors[x]+'CancelRequestAnimationFrame'];
+			}
+			
+			if (!window.requestAnimationFrame)
+			window.requestAnimationFrame = function(callback, element) {
+				var currTime = new Date().getTime();
+				var timeToCall = Math.max(0, 16 - (currTime - lastTime));
+				var id = window.setTimeout(function() { callback(currTime + timeToCall); }, 
+				timeToCall);
+				lastTime = currTime + timeToCall;
+				return id;
+			};
+			
+			if (!window.cancelAnimationFrame)
+			window.cancelAnimationFrame = function(id) {
+				clearTimeout(id);
+			};
+		}());
+		
+		
+		
+		var coin,coinImage,iconImage,icon;					
+		
+		function gameLoop () {
+			if(wplm==true){
+				window.requestAnimationFrame(gameLoop);
+				coin.update();
+				coin.render();
+			}
+		}
+		
+		function sprite (options) {
+			
+			var that = {},
+			frameIndex = 0,
+			tickCount = 0,
+			ticksPerFrame = options.ticksPerFrame || 0,
+			numberOfFrames = options.numberOfFrames || 1;
+			
+			that.context = options.context;
+			that.width = options.width;
+			that.height = options.height;
+			that.image = options.image;
+			
+			that.update = function () {
+				
+				tickCount += 1;
+				
+				if (tickCount > ticksPerFrame) {
+					
+					tickCount = 0;
+					
+					// If the current frame index is in range
+					if (frameIndex < numberOfFrames - 1) {	
+						// Go to the next frame
+						frameIndex += 1;
+					} else {
+						frameIndex = 0;
+					}
+				}
+			};
+			
+			that.render = function () {
+				
+				// Clear the canvas
+				that.context.clearRect(0, 0, that.width, that.height);
+				
+				// Draw the animation
+				that.context.drawImage(that.image,frameIndex * that.width / numberOfFrames,0,that.width / numberOfFrames,that.height,myGamePiece.x,myGamePiece.y,that.width / numberOfFrames,that.height);
+			};
+			
+			return that;
+		}
+		
+		
+		
+		
+		function devmode(onoff){
+			this.enabled=1;
+			this.disabled=0;
+			if(onoff==this.enabled){
+				dev=true;
+				}else if(onoff==this.disabled){
+				dev=false;
+			}
+		}
+		
+		function devmodehealth(){
+			Player.health=10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000;
+		}
+		function healthbar(){
+          if(Player.health>1000){
+            myHealthBar.image.src = GUIimages.healthmax;
+				myHealthBar.update();
+          }
+			if(Player.health<=1000 && Player.health>900){
+				myHealthBar.image.src = GUIimages.healthmax;
+				myHealthBar.update();
+				}else if(Player.health==900 && Player.health>800 || Player.health==950){
+				myHealthBar.image.src = GUIimages.healthmax;
+				myHealthBar.update();
+				}else if(Player.health==800 && Player.health>700|| Player.health==850){
+				myHealthBar.image.src = GUIimages.healtheighty;
+				myHealthBar.update();
+				}else if(Player.health==700 && Player.health>600|| Player.health==750){
+				myHealthBar.image.src = GUIimages.healthsevendy;
+				myHealthBar.update();
+				}else if(Player.health==600 && Player.health>500|| Player.health==650){
+				myHealthBar.image.src = GUIimages.healthsixty;
+				myHealthBar.update();
+				}else if(Player.health==500 && Player.health>400|| Player.health==550){
+				myHealthBar.image.src = GUIimages.healthhalf;
+				myHealthBar.update();
+				}else if(Player.health==400 && Player.health>300|| Player.health==450){
+				myHealthBar.image.src = GUIimages.healthforty;
+				myHealthBar.update();
+				}else if(Player.health==300 && Player.health>200|| Player.health==350){
+				myHealthBar.image.src = GUIimages.healththirty;
+				myHealthBar.update();
+				}else if(Player.health==200 && Player.health>100|| Player.health==250){
+				myHealthBar.image.src = GUIimages.healthtwenty;
+				myHealthBar.update();
+				}else if(Player.health==100 && Player.health>0|| Player.health==150){
+				myHealthBar.image.src = GUIimages.healthten;
+				myHealthBar.update();
+				}else if(Player.health<=0|| Player.health==50){
+				myHealthBar.image.src = GUIimages.healthnone;
+				myHealthBar.update();
+			}
+		}
+		
+		function winPlayer(frames){
+			var frames;
+			this.frames=frames;
+			// Create sprite sheet
+			coinImage = new Image();	
+			// Create sprite
+			coin = sprite({
+				context: myGameArea.canvas.getContext("2d"),
+				width: 120,
+				height: 22,
+				image: coinImage,
+				numberOfFrames: 5,
+				ticksPerFrame: this.frames
+			});
+			// Load sprite sheet
+			coinImage.addEventListener("load", gameLoop);
+			coinImage.src = "stuff/images/winsprite.png";
+		}
+		
+		function move(dir){
+			var frogmodel={up:"images/texture/player_up.gif",down:"images/texture/player_down.gif",left:"images/texture/player_left.gif",right:"images/texture/player_right.gif"};
+			var frogmodela={up:"images/texture/frog2_up.gif",down:"images/texture/frog2_down.gif",left:"images/texture/frog2_left.gif",right:"images/texture/frog2_right.gif"};
+			var sanicmodel={up:"images/sanic_up.png",down:"images/sanic_down.png",left:"images/sanic_left.png",right:"images/sanic_right.png"};
+			var snoop={up:"images/texture/1_up.gif",down:"images/texture/1_down.gif",left:"images/texture/1.gif",right:"images/texture/1_right.gif"};
+			if(dir=="left"){
+				myGamePiece.speedX -= 1.5;
+				if(frog==true){
+					myGamePiece.newPos();
+					myGamePiece.update();
+					myGamePiece.image.src = frogmodel.left;
+					}else if(sanic==true){
+					myGamePiece.newPos();
+					myGamePiece.update();
+					myGamePiece.image.src = sanicmodel.left;
+					}else if(snoopy==true){
+					myGamePiece.newPos();
+					myGamePiece.update();
+					myGamePiece.image.src = snoop.left;
+					}else if(wplm==true){
+					myGamePiece.newPos();
+					myGamePiece.update();
+					myGamePiece.image.src = "images/blank.png";
+					}else{
+					myGamePiece.newPos();
+					myGamePiece.update();
+					myGamePiece.image.src = frogmodela.left;
+				}
+				}else if(dir=="right"){
+				myGamePiece.speedX += 1.5;
+				if(frog==true){
+					myGamePiece.newPos();
+					myGamePiece.update();
+					myGamePiece.image.src = frogmodel.right;
+					}else if(sanic==true){
+					myGamePiece.newPos();
+					myGamePiece.update();
+					myGamePiece.image.src = sanicmodel.right;
+					}else if(snoopy==true){
+					myGamePiece.newPos();
+					myGamePiece.update();
+					myGamePiece.image.src = snoop.right;
+					}else if(wplm==true){
+					myGamePiece.newPos();
+					myGamePiece.update();
+					myGamePiece.image.src = "images/blank.png";
+					}else{
+					myGamePiece.newPos();
+					myGamePiece.update();
+					myGamePiece.image.src = frogmodela.right;
+				}
+				}else if(dir=="down"){
+				myGamePiece.speedY += 1.5; 
+				if(frog==true){
+					myGamePiece.newPos();
+					myGamePiece.update();
+					myGamePiece.image.src = frogmodel.down;
+					}else if(sanic==true){
+					myGamePiece.newPos();
+					myGamePiece.update();
+					myGamePiece.image.src = sanicmodel.down;
+					}else if(snoopy==true){
+					myGamePiece.newPos();
+					myGamePiece.update();
+					myGamePiece.image.src = snoop.down;
+					}else if(wplm==true){
+					myGamePiece.newPos();
+					myGamePiece.update();
+					myGamePiece.image.src = "images/blank.png";
+					}else{
+					myGamePiece.newPos();
+					myGamePiece.update();
+					myGamePiece.image.src = frogmodela.down;
+				}
+				}else if(dir=="up"){
+				myGamePiece.speedY -= 1.5;
+				if(frog==true){
+					myGamePiece.newPos();
+					myGamePiece.update();
+					myGamePiece.image.src = frogmodel.up;
+					}else if(sanic==true){
+					myGamePiece.newPos();
+					myGamePiece.update();
+					myGamePiece.image.src = sanicmodel.up;
+					}else if(snoopy==true){
+					myGamePiece.newPos();
+					myGamePiece.update();
+					myGamePiece.image.src = snoop.up;
+					}else if(wplm==true){
+					myGamePiece.newPos();
+					myGamePiece.update();
+					myGamePiece.image.src = "images/blank.png";
+					}else{
+					myGamePiece.newPos();
+					myGamePiece.update();
+					myGamePiece.image.src = 
+					myGamePiece.image.src = frogmodela.up;
+				}
+			}
+			if(dir=="spin"){
+				loop(spin(),100);
+			}
+		}
+		function bounce(){
+			if(myGamePiece.x<=0 && myGamePiece.x<=0){
+				myGamePiece.x+=10;
+				}else if(myGamePiece.x>=980  && myGamePiece.x>=980){
+				myGamePiece.x-=10;
+				}else if(myGamePiece.x>=1000){
+				
+			}
+		}
+		function loop(code,time){
+			this.time=time;
+			this.code=code;
+			for(var i=0;i<=this.time;i++){
+				this.code;
+			}
+		}
+		function spin(){
+			move("up");
+			move("left");
+			move("down");
+			move("right");
+		}
+		
+		
+		function health(){
+			var temp1, temp2;
+			temp2=0;
+			var damage=50;
+			var dead=false
+			if(dead==false && Player.health > 0){
+				Player.health-=damage;
+				myGamePiece.newPos();
+				myGamePiece.update();
+				myGamePiece.speedX += 10.5;
+				}else if(Player.health<=0 || myGamePiece.crashWith(bot[i])) {
+				dead=true;
+				var temp1=myGameArea.frameNo;
+				data.sessionsave("high_score",temp1);
+				this.datascore=JSON.parse(sessionStorage.getItem("high_score"));
+				if(JSON.parse(localStorage.getItem("score"))==undefined){
+					localStorage.setItem("score",0);
+				}
+				if(this.datascore>JSON.parse(localStorage.getItem("score"))){
+					data.save("score",myGameArea.frameNo);
+				}
+				myGameArea.clear()
+				myGameOver.text="Game Over! " + "Score: " + myGameArea.frameNo;
+				myGameOver.update();
+				mycredits.text = "Made by: Noah Enger, Andrew";
+				mycredits.update();
+				mycreditsA.text = "High Scores: " + JSON.parse(localStorage.getItem("score"));
+				mycreditsA.update();
+				mycreditsB.text = "illustrated by Andrew Urban";
+				mycreditsB.update();
+				var restartbutton = new CreateMenu('resbut');
+				restartbutton.id.style.zIndex=10;
+				restartbutton.show();
+				dialogdeathshow();
+				fs.writeFile('score/score.smrs',myGameArea.frameNo, (err) => {
+					if (err) throw err;
+					console.log('made file user/DEFAULT/score/hs!');
+				});
+				myDeathmusic.play();
+				myMusic.stop();
+			}
+		}
+		
+		
+		function Optionsmenu(){
+			var updateButton = document.getElementById('updateDetails');
+			var favDialog = document.getElementById('menuA');
+			var updateButton2=document.getElementById('mainmenu_options');
+			var startmenubut = document.getElementById('menudialog_start');
+			var optionsmenubut = document.getElementById('menudialog_options');
+			var menu_dialog = document.getElementById('dialogmenu');
+			optionsmenubut.addEventListener('click',function(){
+				favDialog.showModal();
+			});
+			updateButton2.addEventListener('click', function() {
+				favDialog.showModal();
+			});
+			cancelButton.addEventListener('click', function() {
+				favDialog.close();
+			});
+		}
+		
+		function pausegame(){
+		//called when the 'p' key is pressed
+		
+		var pausemenu = document.getElementById('deathmenu');
+		pausemenu.setAttribute("open","open");
+          var q,w,e,r,t,y;
+          q=document.getElementById("line1");
+          w=document.getElementById("line2");
+          e=document.getElementById("line3");
+          r=document.getElementById("line4");
+          t=document.getElementById("line5");
+          q.innerHTML="Score: "+ myGameArea.frameNo;
+          w.innerHTML="HighScore: "+ JSON.parse(localStorage.getItem("score"));
+          e.innerHTML="GameMode: "+ gamemode;
+          r.innerHTML="Version: "+ gameInfo.version_major + "." + gameInfo.version_minor + "." + gameInfo.version_patch + "." + gameInfo.version_type + "." + gameInfo.engine
+            t.innerHTML=gameInfo.copyright
+		}
+		
+		function dialogoptionsshow(showorhide){
+			if(showorhide=="show" || showorhide==true){
+				var dialogopt = document.getElementById('menuA');
+				dialogopt.setAttribute("open","open");
+				var menu_dialog = document.getElementById('dialogmenu');
+				menu_dialog.setAttribute("close","close");
+				}else if(showorhide=="hide" || showorhide==false){
+				var dialogopt = document.getElementById('menuA');
+				dialogopt.setAttribute("close","close");
+				var menu_dialog = document.getElementById('dialogmenu');
+				menu_dialog.setAttribute("open","open");
+			}
+		}
+		function dialogdeathshow(){
+			pausegame();
+		}
+		function dialogmenushow(showorhide){
+			if(showorhide=="show" || showorhide==true){
+				var menu_dialog = document.getElementById('dialogmenu');
+				menu_dialog.setAttribute("open","open");
+				}else if(showorhide=="hide" || showorhide==false){
+				var menu_dialog = document.getElementById('dialogmenu');
+				menu_dialog.setAttribute("close","close");
+			}
+		}
+		
+		function dialoginfoshow(showorhide){
+			if(showorhide=="show" || showorhide==true){
+				var dialoginfo=document.getElementById('dialoginfo');
+				dialoginfo.setAttribute("open","open");
+				var menu_dialog = document.getElementById('dialogmenu');
+				menu_dialog.setAttribute("close","close");
+				}else if(showorhide=="hide" || showorhide=="false"){
+				var dialoginfo=document.getElementById('dialoginfo');
+				dialoginfo.setAttribute("close","close");
+				var menu_dialog = document.getElementById('dialogmenu');
+				menu_dialog.setAttribute("open","open");
+			}
+		}
+		
+		
+		function onPowerup(type,duration){
+			var x, height, gap, minHeight, maxHeight, minGap, maxGap;
+			x = myGameArea.canvas.width;
+			screenHeight=myGameArea.canvas.height;
+			minHeight = 20;
+			maxHeight = 200;
+			height = Math.floor(Math.random()*(maxHeight-minHeight+1)+minHeight);
+			minGap = 50;
+			maxGap = 200;
+			gap = Math.floor(Math.random()*(maxGap-minGap+1)+minGap);
+			
+		} 
+		
+		
+		function getPowerup(){
+			
+		}
+		
+		
+		
+		</script>
+	<dialog id="menuA">
+		<form method="dialog">
+			<section>
+				<p><label for="menuA">Options:</label></p>
+				<p id="note"><note>Note:</note> Only for Google Chrome!</p>
+			</section>
+			<div id="opt">
+			<p2>Game Options:</p2>
+			<br>
+			<button onclick="reloadpage()">Restart!</button>
+			<br>
+			<p2>Difficulty:</p2>
+			<div id="opt_dif">
+			<button onclick="dialogoptionsshow(false);setmode('hard'); myGameArea.clear(); myGameArea.update(); ">Insane mode</button>
+            <button onclick="dialogoptionsshow(false);setmode('normal'); myGameArea.clear();  myGameArea.update();">Normal mode</button>
+            <button onclick="dialogoptionsshow(false);setmode('easy'); myGameArea.clear(); myGameArea.update();">Easy mode</button>
+			</div>
+			<p2>Player Options:</p2>
+			<br>
+			<div id="opt_plr">
+			<button onclick="dialogoptionsshow(false); frog=true; Player.texture=frogmodel.right;snoopy=false; wplm=false; ">Frog Player Model</button>
+            <button onclick="dialogoptionsshow(false); froga=true; frog=false; Player.texture=frogmodela.right;snoopy=false; wplm=false; ">Frog 2 Player Model</button>
+			<button onclick="dialogoptionsshow(false); froga=false; frog=false; sanic=true;snoopy=false;Player.texture=sanicmodel.right; wplm=false; ">Sanic Player Model</button>
+			<button onclick="dialogoptionsshow(false); froga=false; frog=false; sanic=false; snoopy=true; Player.texture=snoop.right; wplm=false;">Snooper Player Model</button>
+			<button onclick="dialogoptionsshow(false); froga=false; frog=false; sanic=false; snoopy=false; Player.texture='images/blank.png'; wplm=true; winPlayer(1);">Windows98 ANIMATED Player Model (A Fast Windows98 PC)</button>
+			<button onclick="dialogoptionsshow(false); froga=false; frog=false; sanic=false; snoopy=false; Player.texture='images/blank.png'; wplm=true; winPlayer(5);">Windows98 ANIMATED Player Model (A Average Windows98 PC)</button>
+			<button onclick="dialogoptionsshow(false); froga=false; frog=false; sanic=false; snoopy=false; Player.texture='images/blank.png'; wplm=true; winPlayer(10);">Windows98 ANIMATED Player Model (A Default Windows98 PC)</button>
+			<button onclick="dialogoptionsshow(false); froga=false; frog=false; sanic=false; snoopy=false; Player.texture='images/blank.png'; wplm=true; winPlayer(100);">Windows98 ANIMATED Player Model (A Slow AF Windows98 PC)</button>
+			
+			</div>
+			<p2>Information:</p2>
+			<br>
+			<div id="opt_info">
+				<a href="" id="a">Download Scores</a>
+				<button onclick="dialogoptionsshow(false);download(JSON.parse(localStorage.getItem('score')), 'Scores.txt', 'text/plain')">Generate Scores<i class="material-icons">file_download</i></button>
+			<button style="font-size:24px" onclick="dialogoptionsshow(false);openwindow('https://www.instagram.com/survivalkid945/?hl=en/')">Instagram<i class="fa fa-instagram"></i></button>
+			<p>Click the "restart" key to reset the game!</p>
+			<p>Use the "w" "a" "s" "d" Keys to move</p>
+			<p2>Developer mode</p2>
+			<button onclick="devmode(1);dialogoptionsshow(false);">Dev mode ON</button>
+			<button onclick="devmode(0);dialogoptionsshow(false);">Dev mode OFF</button>
+			<button onclick="devmodehealth();dialogoptionsshow(false);">Dev health</button>
+              </div>
+              <menu>
+				<button onclick="dialogoptionsshow(false);">Main Menu</button>
+              </menu></form></dialog></dialog>
+
+</body>
+</html>
