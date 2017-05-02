@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Stick Man Run 4.0</title>
+	<meta name="description" content="Note: Only for Google Chrome!">
+	<meta name="author" content="Noah Enger, Andrew Urban, Travis Gomez">
+	<meta name="owner" content="Who owns this page?">
+	<meta name="owner" content="Noah Enger">
+	<meta name="copyright" content="Copyright© 2016 - 2017 StickGenStudios">
+	<meta name="description" content="Game:">
+	<meta name="description" content="StickManRun V4">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<style>
+html{
+cursor:url(images/cursers/burger.cur),auto;
+}
+#opt{
+text-align:center;
+font-family:Impact;
+}
+#opt_dif{
+text-align:center;
+font-family:Impact;
+}
+#opt_info{
+text-align:center;
+font-family:Impact;
+}
+#opt_plr{
+text-align:center;
+font-family:Impact;
+}
+#container{
+height:400px;
+position:relative;
+width:400px;
+}
+#viewport{
+cursor:url(images/cursers/burger.cur),auto;
+z-index:1;
+top:0px;
+height: 100%;
+width: 100%;
+border:1px solid #d3d3d3;
+background-image:url("images/texture/cliff.png");
+-webkit-user-select: text;
+-moz-user-select: text;
+-ms-user-select: text;
+-user-select: text;
+position:fixed;
+}
+#controls{
+cursor:url(images/cursers/burger.cur),auto;
+bottom: 0;
+left: 0;
+width: 100%;
+z-index:2;
+position:absolute;
+top:90; 
+left:90
+}
+canvasa{
+cursor:url(images/cursers/burger.cur),auto;
+border:1px solid #d3d3d3;
+background-image:url("images/texture/woodwall.png");
+-webkit-user-select: text;
+-moz-user-select: text;
+-ms-user-select: text;
+-user-select: text;
+width:1000px;
+height:400px;
+}
+body{
+cursor:url(images/cursers/burger.cur),auto;
+-webkit-user-select: text;
+-moz-user-select: text;
+	background-image:url("images/texture/clifftop.png");
+	background-repeat: repeat-x;
+	 background-image:url("images/texture/cliffbottom.png");
+-ms-user-select: text;
+-user-select: text;
+}
+p, input, textarea{
+cursor:url(images/cursers/burger.cur),auto;
+-webkit-user-select: text;
+-moz-user-select: text;
+-ms-user-select: text;
+-user-select: text;
+z-index:2;
+}
+input{
+cursor:url(images/cursers/burger.cur),auto;
+border:1px solid black;
+box-shadow: 10px 10px;
+}
+header, footer{
+cursor:url(images/cursers/burger.cur),auto;
+background-color:black;
+height:50px;
+position:fixed;
+width:100%;
+z-index:1000;
+}
+footer{
+cursor:url(images/cursers/burger.cur),auto;
+bottom:0px;
+}
+#menuB{
+cursor:url(images/cursers/burger.cur),auto;
+width: 50%;
+-webkit-user-select: text;
+-moz-user-select: text;
+-ms-user-select: text;
+-user-select: text;
+z-index:2;
+}
+#bar_controls{
+-webkit-user-select: text;
+-moz-user-select: text;
+-ms-user-select: text;
+-user-select: text;
+width:1000px;
+height:100px;
+background-color:black;
+z-index:2;
+}
+#menuA,#dialogmenu,#dialoginfo,#deathmenu{
+cursor:url(images/cursers/cur1.ani),auto;
+width:1000px;
+height:500px;
+text-align:center;
+font-family:Impact;
+position:fixed;
+z-index:2;
+border: 15px groove #73AD21;
+padding: 15px;
+	-webkit-animation: mymove 5s infinite; /* Chrome, Safari, Opera */
+    animation: mymove 5s infinite;
+	
+}
+#table_score{
+font-family:Impact;
+}
+table,th,td {
+border: 1px solid grey;
+font-family:Impact;
+}
+#mainmenu_start{
+cursor:url(images/cursers/but.cur),auto;
+	width:200px;
+	margin-top: 100px;
+    margin-bottom: 100px;
+    margin-right: 150px;
+    margin-left: 80px;
+	height:200px;
+	position:fixed;
+	z-index:2;
+}
+#resbut{
+visibility:hidden;
+}
+#Information{
+cursor:url(images/cursers/but.cur),auto;
+	width:200px;
+	margin-top: 150px;
+    margin-bottom: 150px;
+    margin-right: 150px;
+    margin-left: 80px;
+	height:200px;
+	position:fixed;
+	z-index:2;
+}
+#mainmenu_options{
+cursor:url(images/cursers/but.cur),auto;
+	margin-top: 300px;
+    margin-bottom: 300px;
+    margin-right: 150px;
+    margin-left: 80px;
+position:fixed;
+width:200px;
+height:200px;
+font-family:Impact;
+z-index:2;
+}
+#mainmenu{
+cursor:url(images/cursers/cur1.ani),auto;
+position:fixed;
+width:100px;
+height:100px;
+z-index:2;
+}
+#title{
+z-index:2;
+font-family:Impact;
+position:fixed;
+color:black;
+}
+#menuA{
+cursor:url(images/cursers/but.cur),auto;
+top:50px;
+}
+	/* Chrome, Safari, Opera */
+	@-webkit-keyframes mymove {
+    0%   {background-color: green;}
+    25%  {background-color: 009900;}
+    50%  {background-color: blue;}
+    100% {background-color: green;}
+	}
+	
+	/* Standard syntax */
+	@keyframes mymove {
+    0%   {background-color: green;}
+    25%  {background-color: 009900;}
+    50%  {background-color: blue;}
+    100% {background-color: green;}
+	}
+	#myProgress {
+	position: relative;
+	width: 100%;
+	height: 30px;
+	background-color: #ddd;
+	}
+	
+	#myBar {
+	position: absolute;
+	width: 10;
+	height: 40px;
+	background-image:url("images/brick.png");
+	}
+	
+	#label {
+	text-align: center;
+	line-height: 50px;
+	color: white;
+	font-family:Impact;
+	}
+	button{
+	cursor:url(images/cursers/but.cur),auto;
+	}
+	button,#menudialog_start,#updateDetails{
+	cursor:url(images/cursers/but.cur),auto;
+	}
+	#notemenu{
+	z-index:1000000;
+	}
+</style>
+<script src="script/game/Core.core"></script>
+
+	<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>	
+	<script src="audio/music.js"></script>
+	<script src="node_modules/node-core-audio-master/node-core-audio.js"></script>
+	<script src="node_modules/file-system/file-system.js"></script>
+	<script src="script/Storage/storage.js"></script>
+	<script src="user/default.smru"></script>
+	<script src="mods/mods.smrc"></script>
+	<script src="node_modules/audio-master/index.js"></script>
+	<link rel="shortcut icon" href="images/brickmossy.png" type="image/x-icon">
+<link rel="icon" href="images/brickmossy.png"></link> 
+		</head>
+</head>
+<body id="bodydoc" onload="var x=document.createElement('script');x.src='script/game/Core.core';download(JSON.parse(localStorage.getItem('score')), 'Scores.txt', 'text/plain');dialogmenushow(false);load();Optionsmenu();document.getElementById('viewport').style.visibility='hidden';document.getElementById('container').style.visibility='hidden';">
+	<dialog id="notemenu" onclick="document.getElementById('notemenu').style.visibility='hidden'"open="open">
+		<p id="note"><b>Note:</b> Version 4.0.0<br><b>The Animated Update!<br>-Windows98 Animated Player Model!</b><br>-added a new obstical!<br>-fixed some bugs!<br>-added score saving to storage!<br>-custom profiles in storage for modders! *see the mods menu<br>Click this note to remove it!</p>
+	</dialog>
+			<footer id="load">
+		<p id="label_load"><label for="load">Loading Assets . . .</label></p>
+			<div id="myProgress">
+				<div id="myBar">
+					<div id="label">1%</div>
+				</div>
+			</div>
+			</footer>
+			<div id="container">
+		<canvas id="viewport">
+		</canvas>
+			<dialog id="dialogmenu">
+				<form method="dialog">
+					<menu>
+						<section>
+							<p id="title"><label for="dialogmenu"><b>StickManRun</b></label></p>
+						</section>
+					<button id="checkupd" onclick="">Check For Updates Via GitHub.</button>
+					</menu>
+				</form>
+			</dialog>
+				<dialog id="dialoginfo">
+					<form method="dialog">
+						<menu>
+						</menu>
+					</form>
+				</dialog>
+        </body>
+        </html>
