@@ -5,7 +5,12 @@
 
 //links
 var updatelinks={
-  github:" "
+  github:function(){
+  var updater="https://raw.githubusercontent.com/undefinedusername/stickmanrunSource/master/updater/index.html";
+  var game=" ";
+  this.updater=updater;
+  this.game=game;
+  }
 }
 
 //check updates
